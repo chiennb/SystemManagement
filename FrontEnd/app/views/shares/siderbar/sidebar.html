@@ -1,0 +1,55 @@
+﻿<div class="navbar-default sidebar" role="navigation" data-ng-controller="SidebarController">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav in" id="side-menu">
+            <!--<sidebar-search>-->
+            <!--<li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </li>-->
+            <!--</sidebar-search>-->
+            <!--<li ui-sref-active="active">
+                <a ui-sref="home"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+            </li>-->
+            <li ng-class="{active: collapseVar==1}">
+                {{dropDown}}
+                <a href="" ng-click="check(1)">
+                    <i class="fa fa-wrench fa-fw"></i> System Management<span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level" collapse="collapseVar!=1">
+                    <li ui-sref-active="active">
+                        <a ui-sref="applicationList"><i class="fa fa-bar-chart-o fa-fw"></i> Applications<span></span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="functionList"><i class="fa fa-bar-chart-o fa-fw"></i> Functions<span></span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="groupList"><i class="fa fa-bar-chart-o fa-fw"></i> Groups<span></span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="groupFunctionList"><i class="fa fa-bar-chart-o fa-fw"></i> Group Function<span></span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="roleList"><i class="fa fa-bar-chart-o fa-fw"></i> Roles<span></span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="roleGroupList"><i class="fa fa-bar-chart-o fa-fw"></i> Role Group<span></span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="userList"><i class="fa fa-bar-chart-o fa-fw"></i> Users<span></span></a>
+                    </li>
+                    <li ui-sref-active="active">
+                        <a ui-sref="userGroupList"><i class="fa fa-bar-chart-o fa-fw"></i> User Group<span></span></a>
+                    </li>                    
+                </ul>
+            </li>
+              
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>

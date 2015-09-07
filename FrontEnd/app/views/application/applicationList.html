@@ -1,0 +1,111 @@
+﻿<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="page-breadcrumb breadcrumb">
+                <li>
+                    <a>System Management</a>
+                    <i class="fa fa-angle-right"></i>
+                </li>
+                <li>
+                    <a>Aplication List</a>
+                </li>
+            </ul>
+            <!-- END PAGE TITLE & BREADCRUMB-->
+        </div>
+    </div> 
+    <!-- /.row -->
+    <div class="row">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Name</label>
+                    <input name="inputName" type="text" class="form-control"
+                           ng-keyup="$event.keyCode == 13 && search()"
+                           ng-model="name" placeholder="Name">
+                </div>
+                <div class="col-md-6">
+                    <label>Status</label>
+                    <select id="cboStatus" class="form-control" name="cboStatus" ng-model="status" required>
+                        <option value=""> - All - </option>
+                        <option value="active">Active</option>
+                        <option value="disable">Disable</option>
+                        <option value="delete">Delete</option>
+                    </select>
+                </div>
+            </div>
+        </div>        
+        <div class="form-actions">
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-primary"
+                                ng-click="search()">
+                            Search
+                        </button>
+                    </div>
+                    <div class="col-md-6">
+                        <a ui-sref="applicationEdit" class=" btn btn-primary">
+                            Add
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <table class="table table-bordered table-hover tc-table">
+                <thead>
+                    <tr>
+                        <th class="hidden-xs">Name</th>                        
+                        <th class="hidden-xs">Status</th>
+                        <th class="col-medium center">Description</th>
+                        <th class="hidden-xs">Created Date</th>
+                        <th class="col-medium center">Action</th>
+                    </tr>
+                </thead>
+                <tfoot ng-show="{{totalItems > itemsPerPage? true : false }}">
+                    <tr>
+                        <td colspan="6">
+                            <pagination previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;"
+                                        class="pagination-sm"
+                                        boundary-links="true"
+                                        total-items="totalItems"
+                                        items-per-page="itemsPerPage"
+                                        num-pages="numPages"
+                                        max-size="maxSize"
+                                        ng-model="currentPage"
+                                        ng-change="pageChanged()"></pagination>
+                        </td>
+                    </tr>
+                </tfoot>
+                <tbody>
+                    <tr ng-repeat="item in items">
+                        <td>
+                            <a ui-sref="applicationEdit({appId: item._id})">
+                                {{item.name}}
+                            </a>
+                        </td>                        
+                        <td class="col-sm-1">
+                            {{item.status}}
+                        </td>
+                        <td>
+                            {{item.description}}
+                        </td>
+                        <td>
+                            {{item.created_date | date:'dd/MM/yyyy - HH:mm:ss'}}
+                        </td>
+                        <td class="col-sm-1 center">
+                            <div class="btn-group btn-group-xs ">
+                                <a href="" ng-click="goEdit($index)" class="btn btn-inverse"><i class="fa fa-pencil icon-only"></i></a>
+                                <a ng-click='modelDelete($index)' class="btn btn-danger"><i class="fa fa-times icon-only"></i></a>                                
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <pre ng-show="{{totalItems > itemsPerPage? true : false }}">Page: {{currentPage}} / {{numPages}} Total items: {{totalItems}}</pre>
+        </div>
+    </div>
+</div>

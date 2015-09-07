@@ -1,0 +1,73 @@
+<div class="container-fluid">
+	<!-- /.row -->
+    <div class="row">
+        <form class="form-horizontal" id="editForm" name="editForm" novalidate>
+            <fieldset>
+                <legend>Model Information</legend>
+                <div class="form-group"
+                     ng-class="{'has-error':editForm.inputName.$invalid &&
+                                    editForm.inputName.$dirty}">
+                    <label class="col-sm-3 control-label" for="name">Name<span class="required">*</span></label>
+                    <div class="col-sm-5">
+                        <input name="inputName" type="text" class="form-control"
+                               ng-model="currentItem.name" placeholder="Name (required)"
+                               required>
+                        <span class="help-block has-error">
+                            <span ng-show="editForm.inputName.$error.required">
+                                Name is required.
+                            </span>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Status</label>
+                    <div class="col-sm-5">
+                        <select id="cboStatus" class="form-control" name="cboStatus" ng-model="currentItem.status" required>
+                            <option value="active">Active</option>
+                            <option value="disable">Disable</option>
+                            <option value="delete">Delete</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="inputDescription">Description</label>
+                    <div class="col-sm-5">
+                        <textarea name="inputDescription" class="form-control" rows="3"
+                                  ng-model="currentItem.description" placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-5">
+                            <button type="submit" class="btn btn-primary"
+                                    ng-click="save()"
+                                    ng-disabled="editForm.$invalid && editForm.$dirty">
+                                Save & Back
+                            </button>
+                            <button type="submit" class="btn btn-primary"
+                                    ng-click="save('new')"
+                                    ng-disabled="editForm.$invalid && editForm.$dirty">
+                                Save & New
+                            </button>
+                            <button type="submit" class="btn btn-default"
+                                    ng-click="cancel(editForm)">
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn-default"
+                                    ng-click="back()">
+                                Back To List
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group"
+                     ng-show="message">
+                    <div class="col-md-6">
+                        <pre style="font: inherit">{{message }}</pre>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
